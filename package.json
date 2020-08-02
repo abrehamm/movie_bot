@@ -1,0 +1,17 @@
+{
+  "name": "movie_bot",
+  "version": "1.0.0",
+  "description": "A Telegram bot to search for movie info from IMDb.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "bot"
+  ],
+  "author": "Abreham M.",
+  "license": "ISC",
+  "dependencies": {
+    "telegraf": "^3.38.0"
+  }
+}
