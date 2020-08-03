@@ -59,11 +59,16 @@ bot.on("text", ctx => {
         .then(res => {
             result = res;
             let info = '';
-            info = `*${result.title}*
+            info = `   * __${result.title}__ *
+
 *Year:* ${result.year}
+
 *Rated: ${result.rated}*
+
 *Genre:* ${Object.values(result.genre).toString()}
+
 *Actors:* ${Object.values(result.actors).toString()}
+
 *Director:* ${Object.values(result.director).toString()}
 
 *Plot:* _${result.plot}_
