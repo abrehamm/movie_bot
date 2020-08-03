@@ -85,9 +85,7 @@ bot.on("text", ctx => {
             console.log(res);
             ctx.replyWithPhoto({
                 url: result.poster
-            }).then(ctx.reply(info, {
-                reply_markup: 'markdown'
-            }));
+            }).then(ctx.reply(info, markup));
 
         })
         .catch(err => {
