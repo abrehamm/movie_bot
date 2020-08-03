@@ -3,6 +3,7 @@ const telegraf = require("telegraf");
 const express = require("express");
 const bp = require("body-parser");
 const axios = require("axios");
+const markup = require('telegraf/extra').markdown();
 
 require("dotenv").config();
 
@@ -36,9 +37,7 @@ Send me
 Then I'll ask you for the *title* & you'll send me the *exact* title. Easy.`;
 
 bot.command("start", ctx => {
-    ctx.reply(help_msg, {
-        reply_markup: 'markdown'
-    });
+    ctx.reply(help_msg, markup);
 });
 let type = "";
 let result = {};
