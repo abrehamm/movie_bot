@@ -27,8 +27,18 @@ if (process.env.NODE_ENV == "production") {
     bot.launch();
 }
 
+let help_msg = `Selam selam! 
+
+Send me
+*/movie* - to search for movies
+*/series* - to search for series
+
+Then I'll ask you for the *title* & you'll send me the *exact* title. Easy.`;
+
 bot.command("start", ctx => {
-    ctx.reply("Selam!");
+    ctx.reply(help_msg, {
+        reply_markup: 'MarkdownV2'
+    });
 });
 let type = "";
 let result = {};
@@ -50,19 +60,35 @@ bot.on("text", ctx => {
         .then(res => {
             result = res;
             let info = '';
-            let infokw = [
-                ['Title', 'title'],
-                ['Year', 'year'],
-                ['Plot', 'plot'],
-                ['IMDb Rating', 'imdbrating']
-            ];
-            infokw.forEach(element => {
-                info += element[0] + ' : ' + result[element[1]] + '\n';
-            });
+            info = `*__${result.title}__*
+            *Year:* ${result.year}
+            *Rated: ${result.rated}*
+            *Genre:* ${Object.values(result.genre).toString()}
+            *Actors:* ${Object.values(result.actors).toString()}
+            *Director:* ${Object.values(result.actors).toString()}
+
+            *Plot:* _${result.plot}_
+            
+            *IMDb Rating: ${result.imdbrating}*`;
+
+            if (type == 'series') {
+                info += `*Seasons: ${result.totalseasons}*`;
+            }
+            // let infokw = [
+            //     ['Title', 'title'],
+            //     ['Year', 'year'],
+            //     ['Plot', 'plot'],
+            //     ['IMDb Rating', 'imdbrating']
+            // ];
+            // infokw.forEach(element => {
+            //     info += element[0] + ' : ' + result[element[1]] + '\n';
+            // });
             console.log(res);
             ctx.replyWithPhoto({
                 url: result.poster
-            }).then(ctx.reply(info));
+            }).then(ctx.reply(info, {
+                reply_markup: 'MarkdownV2'
+            }));
 
         })
         .catch(err => {
