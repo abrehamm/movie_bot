@@ -59,8 +59,8 @@ bot.on("text", ctx => {
         .then(res => {
             result = res;
             let info = '';
-            info = `   * __${result.title}__ *
-
+            info = `* ${result.title} *
+---
 *Year:* ${result.year}
 
 *Rated: ${result.rated}*
@@ -91,6 +91,8 @@ bot.on("text", ctx => {
             console.log(res);
             ctx.replyWithPhoto({
                 url: result.poster
+            }, {
+                caption: result.title
             }).then(ctx.reply(info, markup));
 
         })
