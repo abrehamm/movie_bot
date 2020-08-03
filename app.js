@@ -37,7 +37,7 @@ Then I'll ask you for the *title* & you'll send me the *exact* title. Easy.`;
 
 bot.command("start", ctx => {
     ctx.reply(help_msg, {
-        reply_markup: 'MarkdownV2'
+        parse_mode: 'MarkdownV2'
     });
 });
 let type = "";
@@ -87,7 +87,7 @@ bot.on("text", ctx => {
             ctx.replyWithPhoto({
                 url: result.poster
             }).then(ctx.reply(info, {
-                reply_markup: 'MarkdownV2'
+                parse_mode: 'MarkdownV2'
             }));
 
         })
