@@ -59,19 +59,20 @@ bot.on("text", ctx => {
         .then(res => {
             result = res;
             let info = '';
-            info = `*__${result.title}__*
-            *Year:* ${result.year}
-            *Rated: ${result.rated}*
-            *Genre:* ${Object.values(result.genre).toString()}
-            *Actors:* ${Object.values(result.actors).toString()}
-            *Director:* ${Object.values(result.actors).toString()}
+            info = `*${result.title}*
+*Year:* ${result.year}
+*Rated: ${result.rated}*
+*Genre:* ${Object.values(result.genre).toString()}
+*Actors:* ${Object.values(result.actors).toString()}
+*Director:* ${Object.values(result.director).toString()}
 
-            *Plot:* _${result.plot}_
+*Plot:* _${result.plot}_
             
-            *IMDb Rating: ${result.imdbrating}*`;
+*IMDb Rating: ${result.imdbrating}*`;
 
-            if (type == 'series') {
-                info += `*Seasons: ${result.totalseasons}*`;
+            if (result.type == "series") {
+                info += `
+*Seasons: ${result.totalseasons}*`;
             }
             // let infokw = [
             //     ['Title', 'title'],
